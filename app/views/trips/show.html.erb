@@ -1,0 +1,19 @@
+<h1><%= @trip.name %></h1>
+<p>Total Hiking Distance: <%= @trip.trails.total_distance %> miles</p>
+<p>Average Hiking Distance: <%= @trip.trails.average_distance %> miles</p><br>
+
+<h2>All Trails:</h2><br>
+<% @trip.trails.each do |trail| %>
+  <section id="trail-<%= trail.id %>">
+    <% if @trip.trails.longest_trail.first == trail %>
+      <h3>Longest Trail on Trip</h3>
+    <% elsif @trip.trails.shortest_trail.first == trail  %>
+      <h3>Shortest Trail on Trip</h3>
+    <% end %>
+
+    <h4><%= link_to "#{trail.name}", "/trips/#{@trip.id}/trails/#{trail.id}" %></h4>
+    <p>Address: <%= trail.address %></p>
+    <p>Length of Trail: <%= trail.length %> miles</p>
+  </section>
+  <br>
+<% end %>

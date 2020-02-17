@@ -1,0 +1,13 @@
+<h1><%= @trail.name %></h1>
+<p>Length: <%= @trail.length %> miles</p>
+<p>Address: <%= @trail.address %></p><br><br>
+
+<h3>Hiking Trips: </h3>
+<p>Total number of hiking trips: <%= @trail.num_hiking_trips %></p><br>
+
+<% @trail.trips.each do |trip| %>
+  <section id="trip-<%= trip.id %>">
+    <p><%= trip.name %></p>
+    <p>Total Length: <%= trip.trails.total_distance %> miles</p>
+  </section><br>
+<% end %>
